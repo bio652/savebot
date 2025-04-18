@@ -50,8 +50,8 @@ async def checkLink(link:str):
 
 async def checkUserandAdd(message: types.Message, state: FSMContext):
     if await data.checkUser(userid=message.from_user.id):
-        vids = await data.getVids(userid=message.from_user.id)
         await data.checkVids(userid=message.from_user.id)
+        vids = await data.getVids(userid=message.from_user.id)
         await mainmenu(message, state, vids=vids)
     else:
         result = await data.addUser(userid=message.from_user.id)
