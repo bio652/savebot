@@ -61,8 +61,10 @@ async def linkmessage(message: types.Message, state:FSMContext):
                         await loading.delete()
                         await state.clear()
                 else:
+                    os.remove(result)
                     await loading.delete()
                     await message.answer("❌Ваше видео слишком объёмное.❌")
+                    await state.clear()
             elif status == "und":
                 await message.answer("❌Ссылка на данный ресурс не поддерживается.❌")
         else:
